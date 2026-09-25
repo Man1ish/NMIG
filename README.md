@@ -35,8 +35,7 @@ The experiments in the paper were run on the following setup:
 The code is on the `nmig` branch:
 
 ```bash
-git clone -b nmig https://github.com/Man1ish/openwhisk_nmig.git
-cd openwhisk_nmig
+git clone https://github.com/Man1ish/NMIG.git
 ```
 
 ### 2. Install the Python dependencies
@@ -88,7 +87,8 @@ The project uses three terminals.
 
 ```bash
 # start OpenWhisk
-<command to start OpenWhisk>
+git clone -b nmig https://github.com/Man1ish/openwhisk_nmig.git
+cd openwhisk_nmig
 ```
 
 **Terminal 2: start the resource monitor**
