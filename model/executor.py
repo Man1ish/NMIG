@@ -99,7 +99,27 @@ class FunctionExecutor:
                 input_array.extend(["--param", "gpu", "second"])
 
         elif self.event_type == 'proposed':
-            pass
+            function_path = self.functions[func_name]['func']
+            function_path = function_path+"_p"
+            # function_can_run_cpu = ["resnet50","inception","googlenet"]
+
+            input_array = ["wsk", "action", "invoke", function_path]
+                
+            device, batch = self.decide_device_and_batch(function_path, self.gpu_manager.get_usage(),function_run_gpu_first,function_run_gpu_second)
+            
+            if device == "cpu":
+                input_array.extend(["--param", "device", "cpu"]) 
+            elif device == "multi-gpu":
+                input_array.extend(["--param", "device", "gpu"])
+                input_array.extend(["--param", "multi_gpu","True"])
+            elif device == "first":
+                input_array.extend(["--param", "device", "gpu"]) 
+                input_array.extend(["--param", "gpu", "first"])
+            elif device == "second":
+                input_array.extend(["--param", "device", "gpu"]) 
+                input_array.extend(["--param", "gpu", "second"])
+
+            input_array.extend(["--param", "batch", str(batch)])
 
         elif self.event_type == 'normal':
             if func_name.endswith("_p"):

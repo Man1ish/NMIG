@@ -36,7 +36,7 @@ if __name__ == "__main__":
 
         parser.add_argument('--dataset', type=str, default="normal_gen") # Type of dataset bursty_gen, similar_gen, normal_gen, hybrid_gen,control_trace
         parser.add_argument('--method', type=str, default='TimeBasedExecution') #OneTimeExecution,TimeBasedExecution, CustomExecution
-        parser.add_argument('--event_type', type=str, default='proposed_process_profiler') # proposed, normal, proposed_process, proposed_process_profiler
+        parser.add_argument('--event_type', type=str, default='proposed') # proposed, normal, proposed_process, proposed_process_profiler
         parser.add_argument('--method_type', type=str, default='proposed') # proposed, hist, openwhisk
         parser.add_argument('--activation', type=str, default='normal') # normal, bursty
 
