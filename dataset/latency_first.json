@@ -1,0 +1,34 @@
+{
+  "alexnet": {
+    "device": "GPU",
+    "batch": 30
+  },
+  "alexnet_video": {
+    "device": "GPU",
+    "batch": 30
+  },
+  "efficientnet": {
+    "device": "GPU",
+    "batch": 30
+  },
+  "resnet50": {
+    "device": "GPU",
+    "batch": 1
+  },
+  "inception": {
+    "device": "GPU",
+    "batch": 1
+  },
+  "googlenet": {
+    "device": "GPU",
+    "batch": 1
+  },
+  "bert": {
+    "device": "GPU",
+    "batch": 1
+  },
+  "distilgpt2": {
+    "device": "GPU",
+    "batch": 1
+  }
+}

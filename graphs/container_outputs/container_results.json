@@ -1,0 +1,19 @@
+{
+  "containers_per_image": {
+    "bert-v1.0": 65,
+    "efficientnet-v1.0": 65,
+    "distilgpt2-v1.0": 17,
+    "alexnet-v1.0": 9,
+    "googlenet-v1.0": 8,
+    "inception-v1.0": 6,
+    "resnet50-v1.0": 4
+  },
+  "unique_containers_total": 173,
+  "unique_images_total": 7,
+  "peak_running_containers": 32,
+  "peak_paused_containers": 42,
+  "idle_gpu_mb_fraction": 0.0,
+  "peak_idle_gpu_mb": 0.0,
+  "peak_active_gpu_mb": 0.0,
+  "total_unique_containers": 173
+}

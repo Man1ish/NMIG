@@ -1,0 +1,72 @@
+ wsk action update gpu_image alexnet.py --docker pandeymanish93/action-python-v3.9:16.0 --memory 1024
+wsk action invoke gpu_image --result
+sudo ./gradlew core:standalone:bootRun --args="-c $(pwd)/core/standalone/src/main/resources/standalone.conf"
+./tutorials/local_build.sh -r python39Action -t pandeymanish93/action-python-v3.9:16.0
+ssh -p 22345 sslab@155.230.118.75
+wsk property set \
+  --apihost 'http://172.17.0.1:3233' \
+  --auth '23bc46b1-71f6-4ed5-8c54-816aa4f8c502:123zO3xZCLrMN6v2BKK1dXYFpXlPkccOFqm12CdAsMgRU4VrNZ9lyGVCGuMDGIwP'
+conda activate manish
+python download_models.py
+wsk action invoke gpu_image --result --param device auto --param multi_gpu True --result
+bash run_script.sh update
+wsk action update resnet resnet50.py --docker=pandeymanish93/ml-inference:resnet50-v1.0 --memory 1024
+
+wsk action update alexnet core/mlruntime/alexnet/alexnet.py --docker=pandeymanish93/ml-inference:resnet50-v1.0 --memory 1024
+
+./tutorials/local_build_ml.sh -r alexnet -t pandeymanish93/ml-inference:alexnet-v1.0
+
+# Stopping running containers
+docker ps --format "{{.ID}} {{.Names}}" | grep 'wsk0.*guest' | awk '{print $1}' | xargs -r docker stop
+
+docker unpause d1d5792140ad
+
+docker exec -it d1d5792140ad /bin/bash   # or /bin/sh
+wsk action invoke alexnet --param device gpu --result
+
+#git ignore files list
+git ls-files --others -i --exclude-standard
+
+#Tmux session
+tmux new-session -s openwhisk
+tmux new-session -s resource-server
+#Attached session
+tmux attach-session -t openwhisk
+tmux attach-session -t resource-server
+
+docker stop $(docker ps -q --filter "ancestor=openwhisk/action-nodejs-v14:nightly")
+docker stop $(docker ps -q --filter "ancestor=pandeymanish93/ml-inference:zygote-v1.2")
+bash run_script.sh update_all
+wsk action invoke googlenet_p --result
+wsk action invoke alexnet_p --result
+
+wsk action update alexnet alexnet.py --docker=pandeymanish93/ml-inference:alexnet-v1.0 --memory 1024
+wsk action update alexnet_video alexnet_video.py --docker=pandeymanish93/ml-inference:alexnet-v1.0 --memory 1024
+
+wsk action invoke alexnet --param device cpu --result
+wsk action invoke alexnet --param device gpu --result
+
+
+wsk action invoke alexnet_video --param device gpu --param batch 45 --result
+
+docker image prune
+
+bash dockerbuild.sh -p -v v1.2
+bash run_script.sh update_all
+
+wsk action invoke inception_p --result
+wsk action invoke googlenet_p --result
+wsk action invoke resnet50_p --result
+
+wsk action invoke alexnet_p --result
+wsk action invoke efficientnet_p --result
+
+docker stop $(docker ps -q)
+
+docker run -d --name redis-server -p 6379:6379 redis redis-server --requirepass openwhisk
+docker exec -it redis-server redis-cli
+auth openwhisk
+
+docker ps --filter "name=^/pandey" -q | xargs -r docker stop
+
+LD_LIBRARY_PATH= git push origin master

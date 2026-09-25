@@ -1,0 +1,8 @@
+func,trace_id,category_id,id,memory,file_path
+alexnet,45,1,49535532e285d1ef68b0a7b8c3bc3973b36ec38a4c594ec9f1412084c27036ff,1024,alexnet.py
+efficientnet,45,1,cd9f7f333d59aede8088772edac3bff78c45e2dad8eb498b450b9af511452a36,1024,efficientnet.py
+bert,52,2,48cc770d590d3c5a7691b3b4e9302f82ec3be5ddc2a037d94ad2e76f44dd8946,1024,bert.py
+distilgpt2,52,2,4ebfe961fb725aa1b0e95c0f40be44625edbfbbb9b89aa593e23d81211eb3e87,1024,distilgpt2.py
+resnet50,20,3,1cf618f9ee318fecbc31aa059ded8328581b9a9b092f1069b9f7679b6f89e52e,1024,resnet50.py
+googlenet,20,3,b89efb5e9d1b7e5900ef441b098d4c8b01600af5e673a9f9d607b3598f0fe548,1024,googlenet.py
+inception,20,3,e5298aafdbabecd1465ab0eeb24d7633ac7de0284f7ee075209b119c297a3622,1024,inception.py

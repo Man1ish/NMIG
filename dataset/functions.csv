@@ -1,0 +1,8 @@
+id,func,path,docker,memory
+313c03f53a0d31f70aec25f62efb33e7dd779725ca4af579018452d1204beaad,alexnet,alexnet.py,pandeymanish93/ml-inference:alexnet-v1.0,1024
+556ccf8758c8c2a20082c161e955405e950439f0503522fe129e709a5dc0e58f,resnet50,resnet50.py,pandeymanish93/ml-inference:resnet50-v1.0,1024
+155e47f8e7f751d0c845049456d01832013c61336a8cd85901330ac821a71534,googlenet,googlenet.py,pandeymanish93/ml-inference:googlenet-v1.0,1024
+31aa5ab69d7730086b08f4303aa2ac3244c639866908fc3412bdfdc79ba39c22,bert,bert.py,pandeymanish93/ml-inference:bert-v1.0,1024
+426930ee2324a425c25463ff35403f47f2f86624df705f5cc0fde7694d855c42,distilgpt2,distilgpt2.py,pandeymanish93/ml-inference:distilgpt2-v1.0,1024
+b74c4ab0e0a6349700abbf5ca5f97d54005710f2289f96a42df946539971c7f3,inception,inception.py,andeymanish93/ml-inference:inception-v1.0,1024
+9bc86d6cd1ee254aaa313492f0fd88be8bd7b92d50d4237ff52d7685440c0906,efficientnet,efficientnet.py,docker=pandeymanish93/ml-inference:efficientnet-v1.0,1024
